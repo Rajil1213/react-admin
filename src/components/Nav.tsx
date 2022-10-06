@@ -1,22 +1,39 @@
-import React, {Component}  from "react";
+import axios from "axios";
+import React, { useEffect, useState }  from "react";
 
-class Nav extends Component {
-    render(): React.ReactNode {
-        return (
-            <header className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+const Nav = () => {
+    const [user, setUser] = useState({
+        first_name: ''
+    });
+
+    // analogous to componentDidMount
+    useEffect(() => {
+        // function in useEffect cannot be async, hence this nested implementation with anon function
+        (
+            async () => {
+                const {data} = await axios.get("http://localhost:3000/api/user", { 
+                    withCredentials: true
+                })
+
+                if (data.id) {
+                    setUser(data);
+                }
+            }
+        )();
+    }, []);
+    // second argument is dependency list, rerender if any [object] changes
+    // as this is empty, this will run once
+
+    return (
+        <nav className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
             <a className="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">Company name</a>
-            <button className="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-                <span className="navbar-toggler-icon"></span>
-            </button>
-            <input className="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search"/>
-            <div className="navbar-nav">
-                <div className="nav-item text-nowrap">
-                <a className="nav-link px-3" href="#">Sign out</a>
-                </div>
-            </div>
-            </header>
-        )
-    }
+
+            <ul className="my-2 my-md-0 mr-md-3">
+                <a href="#" className="p2 text-white text-decoration-none">{user.first_name}</a> 
+                <a href="#" className="p-2 text-white">Sign out</a>
+            </ul>
+        </nav>
+    )
 }
 
 export default Nav;
