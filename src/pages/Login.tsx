@@ -10,11 +10,11 @@ const Login = () => {
     const submit = async (e: SyntheticEvent) => {
         e.preventDefault()
         
-        const { status, data } = await axios.post("http://localhost:3000/api/login", {
+        const { status, data } = await axios.post("login", {
             email: email,
             password: password
-        }, { withCredentials: true});
-        // `withCredentials` to get cookie
+        });
+        // `withCredentials` to get cookie, defined in `index.tsx`
 
         console.log(data)
 

@@ -11,9 +11,7 @@ const Nav = () => {
         // function in useEffect cannot be async, hence this nested implementation with anon function
         (
             async () => {
-                const {data} = await axios.get("http://localhost:3000/api/user", { 
-                    withCredentials: true
-                })
+                const {data} = await axios.get("user")
 
                 if (data.id) {
                     setUser(data);
