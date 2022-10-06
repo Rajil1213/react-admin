@@ -1,6 +1,7 @@
 import React, {Component, SyntheticEvent} from 'react';
 import '../Login.css';
 import axios from 'axios';
+import { Navigate } from 'react-router-dom';
 
 class Register extends Component {
     first_name = '';
@@ -8,6 +9,9 @@ class Register extends Component {
     email = '';
     password = '';
     password_confirm = '';
+    state = {
+        redirect: false
+    };
 
     submit = async (e: SyntheticEvent) => {
         e.preventDefault();
@@ -28,9 +32,20 @@ class Register extends Component {
         });  
 
         console.log(response);
+
+        if (response.status === 200) {
+            this.setState({
+                redirect: true
+            })
+        }
     }
 
     render() {
+
+        if (this.state.redirect) {
+            return <Navigate to={'/login'} />;
+        }
+
         return (
             <main className="form-signin">
                 <form onSubmit={this.submit}>
