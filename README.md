@@ -24,6 +24,7 @@ This directory contains components that are common to all, if not most, pages. I
 ### [Wrapper](./src/components/Wrapper.tsx)
 * Defines the wrapper for private endpoints pages.
 * This includes the `Menu` and `Nav` components and wraps specific _private_ pages defined in [`pages`](./src/pages/).
+* Pages wrapped with this redirect to `login` page if unauthenticated.
 
 ## [src/pages](./src/pages/)
 This directory contains page designs that are specific to certain endpoints. These pages form the main content of each web page.
