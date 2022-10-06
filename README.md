@@ -35,6 +35,11 @@ This directory contains page designs that are specific to certain endpoints. The
 ### [Users](./src/pages/Users.tsx)
 * Defines the `Users` page design.
 * This page is wrapped in [`Wrapper`](./src/components/Wrapper.tsx).
-
 ### [Register](./src/pages/Register.tsx)
 * Defines the `Register` page design.
+* Redirects to `Login` page on successful registration.
+
+### [Login](./src/pages/Login.tsx)
+* Defines the Login page design.
+* Redirects to root page on successful login.
+
