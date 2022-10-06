@@ -21,7 +21,7 @@ This directory contains components that are common to all, if not most, pages. I
 * Defines the top navbar.
 * Houses the company logo and the sign-out button.
 
-## [Wrapper](./src/components/Wrapper.tsx)
+### [Wrapper](./src/components/Wrapper.tsx)
 * Defines the wrapper for private endpoints pages.
 * This includes the `Menu` and `Nav` components and wraps specific _private_ pages defined in [`pages`](./src/pages/).
 
