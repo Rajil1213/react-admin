@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Menu = () => {
     return (
@@ -6,10 +7,16 @@ const Menu = () => {
             <div className="position-sticky pt-3 sidebar-sticky">
             <ul className="nav flex-column">
                 <li className="nav-item">
-                <a className="nav-link active">
+                <Link to={'/'} className="nav-link active">
                     <span data-feather="home" className="align-text-bottom"></span>
                     Dashboard
-                </a>
+                </Link>
+                </li>
+                <li className="nav-item">
+                <Link to={'/users'} className="nav-link active">
+                    <span data-feather="home" className="align-text-bottom"></span>
+                    Users
+                </Link>
                 </li>
             </ul>
             </div>
