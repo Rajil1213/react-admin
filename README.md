@@ -1,46 +1,40 @@
-# Getting Started with Create React App
+# React-Admin
+A simple React App (bootstrapped with [`create-react-app`](https://github.com/facebook/create-react-app) using `typescript` as template) that serves as the frontend for [`go-admin`](https://github.com/Rajil1213/go-admin).
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# How to run?
+* `npm start`
+  - Starts the server on port 3000
+* `npm run build`
+  - Builds the app for production to the `build` directory
 
-## Available Scripts
+# Code Structure
+This section explains the code structure for the parts that are different from the default `create-react-app` template.
 
-In the project directory, you can run:
+## [src/components](./src/components/)
+This directory contains components that are common to all, if not most, pages. In short, these are the page components that get rendered the most often across all pages.
 
-### `npm start`
+### [Menu](./src/components/Menu.tsx)
+* Defines the `Menu` side bar for navigation.
+* Available on private endpoints.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### [Nav](./src/components/Nav.tsx)
+* Defines the top navbar.
+* Houses the company logo and the sign-out button.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## [Wrapper](./src/components/Wrapper.tsx)
+* Defines the wrapper for private endpoints pages.
+* This includes the `Menu` and `Nav` components and wraps specific _private_ pages defined in [`pages`](./src/pages/).
 
-### `npm test`
+## [src/pages](./src/pages/)
+This directory contains page designs that are specific to certain endpoints. These pages form the main content of each web page.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### [Dashboard](./src/pages/Dashboard.tsx)
+* Defines the `Dashbaord` page design.
+* This page is wrapped in [`Wrapper`](./src/components/Wrapper.tsx).
 
-### `npm run build`
+### [Users](./src/pages/Users.tsx)
+* Defines the `Users` page design.
+* This page is wrapped in [`Wrapper`](./src/components/Wrapper.tsx).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+### [Register](./src/pages/Register.tsx)
+* Defines the `Register` page design.
