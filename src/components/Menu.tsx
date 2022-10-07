@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const Menu = () => {
     return (
@@ -7,16 +7,18 @@ const Menu = () => {
             <div className="position-sticky pt-3 sidebar-sticky">
             <ul className="nav flex-column">
                 <li className="nav-item">
-                <Link to={'/'} className="nav-link active">
+                {/* NavLink works like `link` but highlights the active Link */}
+                {/* You can define what class to apply to the link when active using the `className` attribute */}
+                <NavLink end to={'/'} className="nav-link">
                     <span data-feather="home" className="align-text-bottom"></span>
                     Dashboard
-                </Link>
+                </NavLink>
                 </li>
                 <li className="nav-item">
-                <Link to={'/users'} className="nav-link active">
+                <NavLink to={'/users'} className="nav-link">
                     <span data-feather="home" className="align-text-bottom"></span>
                     Users
-                </Link>
+                </NavLink>
                 </li>
             </ul>
             </div>
