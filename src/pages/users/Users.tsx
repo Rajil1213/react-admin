@@ -7,6 +7,7 @@ const Users = () => {
     const [users, setUsers] = useState([]);
     const [page, setPage] = useState(1);
     const [lastPage, setLastPage] = useState(0); 
+    const [id, setId] = useState(0);
 
     useEffect(() => {
         (
@@ -27,6 +28,13 @@ const Users = () => {
     const previous = () => {
         let pageVal = page > 1? page - 1: 1;
         setPage(pageVal);
+    }
+
+    const deleteUser = async (id: Number) => {
+        if (window.confirm("Are you sure you want to delete this user?")) {
+            await axios.delete(`users/${id}`)
+            setUsers(users.filter((u: User) => u.id !== id))
+        }
     }
 
     return (
@@ -50,7 +58,11 @@ const Users = () => {
                                     <td>{user.first_name} {user.last_name}</td>
                                     <td>{user.email}</td>
                                     <td>{user.role.name}</td>
-                                    <td></td>
+                                    <td>
+                                        <div className="btn-group mr-2">
+                                            <a className="btn btn-sm btn-outline-secondary" href="#" onClick={(e) => deleteUser(user.id)} >Delete</a>
+                                        </div>
+                                    </td>
                                 </tr>
                             )
                         })}
