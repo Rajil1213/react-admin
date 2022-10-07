@@ -5,17 +5,29 @@ import { User } from '../../models/user';
 
 const Users = () => {
     const [users, setUsers] = useState([]);
+    const [page, setPage] = useState(1);
+    const [lastPage, setLastPage] = useState(0); 
 
     useEffect(() => {
         (
             async () => {
-                const {data} = await axios.get("users");
-                console.log(data)
+                const {data} = await axios.get(`users?page=${page}`);
 
                 setUsers(data.data);
+                setLastPage(data.meta.last_page)
             }
         )()
-    }, []);
+    }, [page]);
+
+    const next = () => {
+        let pageVal = page < lastPage? page + 1: lastPage;
+        setPage(pageVal);
+    }
+
+    const previous = () => {
+        let pageVal = page > 1? page - 1: 1;
+        setPage(pageVal);
+    }
 
     return (
         <Wrapper>            
@@ -45,6 +57,18 @@ const Users = () => {
                     </tbody>
                 </table>
             </div>
+            
+            <nav>
+                <ul className="pagination">
+                    <li className="page-item">
+                        <a href="#" className="page-link" onClick={previous}>Previous</a>
+                    </li>
+                    <li className="page-item">
+                        <a href="#" className="page-link" onClick={next}>Next</a>
+                    </li>
+                </ul>
+            </nav>
+
         </Wrapper>
     );
 }
