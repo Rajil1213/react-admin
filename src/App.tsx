@@ -17,7 +17,7 @@ function App() {
             <Route path={'/register'} element={<Register />} />
             <Route path={'/login'} element={<Login />} />
             <Route path={'/users/create'} element={<UserCreate />}/>
-            <Route path={'/users/edit'} element={<UserEdit />}/>
+            <Route path={'/users/:id/edit'} element={<UserEdit />}/>
           </Routes>
         </BrowserRouter>
       </div>
