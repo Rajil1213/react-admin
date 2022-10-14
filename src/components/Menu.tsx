@@ -9,16 +9,22 @@ const Menu = () => {
                 <li className="nav-item">
                 {/* NavLink works like `link` but highlights the active Link */}
                 {/* You can define what class to apply to the link when active using the `className` attribute */}
-                <NavLink end to={'/'} className="nav-link">
-                    <span data-feather="home" className="align-text-bottom"></span>
-                    Dashboard
-                </NavLink>
+                    <NavLink end to={'/'} className="nav-link">
+                        <span data-feather="home" className="align-text-bottom"></span>
+                        Dashboard
+                    </NavLink>
                 </li>
                 <li className="nav-item">
-                <NavLink to={'/users'} className="nav-link">
-                    <span data-feather="home" className="align-text-bottom"></span>
-                    Users
-                </NavLink>
+                    <NavLink to={'/users'} className="nav-link">
+                        <span data-feather="home" className="align-text-bottom"></span>
+                        Users
+                    </NavLink>
+                </li>
+                <li className="nav-item">
+                    <NavLink to={'/roles'} className="nav-link">
+                        <span data-feather="home" className="align-text-bottom"></span>
+                        Roles
+                    </NavLink>
                 </li>
             </ul>
             </div>
