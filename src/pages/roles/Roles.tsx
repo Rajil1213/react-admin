@@ -15,7 +15,7 @@ const Roles = () => {
                 setRoles(data);
             }
         )();
-    }, [roles])
+    }, [])
 
     const deleteRole = async (roleId: number) => {
         if (window.confirm("Are you sure you want to delete this role?")) {
