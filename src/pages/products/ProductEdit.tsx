@@ -1,6 +1,7 @@
 import axios from 'axios';
-import React, { SyntheticEvent, useEffect, useState } from 'react'
+import React, { SyntheticEvent, useEffect, useRef, useState } from 'react'
 import { Navigate, useParams } from 'react-router-dom';
+import ImageUpload from '../../components/ImageUpload';
 import Wrapper from '../../components/Wrapper';
 
 const ProductEdit = () => {
@@ -10,6 +11,11 @@ const ProductEdit = () => {
     const [image, setImage] = useState("");
     const [price, setPrice] = useState(0);
     const [redirect, setRedirect] = useState(false);
+
+    // prevent re-rendering for images
+    // keep new value; allow editing (according to course)
+    // but works even if you don't use this
+    const ref = useRef<HTMLInputElement>(null);
 
     const { id } = useParams();
 
@@ -25,6 +31,13 @@ const ProductEdit = () => {
             }
         )();
     }, [id])
+
+    const updateImage = (url: string) => {
+        if (ref.current) {
+            ref.current.value = url;
+            setImage(url);
+        }
+    }
 
 
     const submit = async (e: SyntheticEvent) => {
@@ -54,11 +67,18 @@ const ProductEdit = () => {
                 </div>
                 <div className="mb-3">
                     <label>Description</label>
-                    <input type="textarea" className="form-control" onChange={e => setDescription(e.target.value)}defaultValue={description}/>
+                    <textarea className="form-control" onChange={e => setDescription(e.target.value)}defaultValue={description}/>
                 </div>
                 <div className="mb-3">
                     <label>Image</label>
-                    <input type="url" className="form-control" onChange={e => setImage(e.target.value)} defaultValue={image}/>
+                    <div className="input-group">
+                        <input 
+                            className="form-control" 
+                            ref={ref}
+                            onChange={e => updateImage(e.target.value)} 
+                            defaultValue={image}/>
+                        <ImageUpload uploaded={updateImage}/>
+                    </div>
                 </div>
                 <div className="mb-3">
                     <label>Price</label>
