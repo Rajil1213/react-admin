@@ -5,10 +5,21 @@ import Wrapper from '../../components/Wrapper'
 import { Order } from '../../models/order';
 import { OrderItem } from '../../models/order-item';
 
+const hide = {
+    maxHeight: 0,
+    transition: "500ms ease-in"
+}
+
+const show = {
+    maxHeight: "150px",
+    transition: "1000ms ease-out"
+}
+
 const Orders = () => {
     const [orders, setOrders] = useState([]);
     const [page, setPage] = useState(1);
     const [lastPage, setLastPage] = useState(0);
+    const [selected, setSelected] = useState(0);
 
     useEffect(() => {
         (
@@ -21,11 +32,15 @@ const Orders = () => {
         )();
     }, [page])
 
+    const select = (orderId: number) => {
+        setSelected(selected === orderId? 0: orderId);
+    }
+
     return (
         <Wrapper>
 
             <div className="table-responsive">
-                <table className="table table-striped table-sm">
+                <table className="table table-sm">
                     <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -46,13 +61,16 @@ const Orders = () => {
                                         <td>{o.total}</td>
                                         <td>
                                             <div className="btn-group mr-2">
-                                                <a className="btn btn-sm btn-outline-secondary" href="#" >View</a>
+                                                <a 
+                                                    className="btn btn-sm btn-outline-secondary" 
+                                                    href="#" 
+                                                    onClick={e => select(o.id)}>View</a>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td colSpan={5}>
-                                            <div>
+                                            <div className='overflow-hidden' style={selected === o.id? show: hide}>
                                                 <table className="table table-sm">
                                                     <thead>
                                                         <tr>
