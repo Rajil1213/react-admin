@@ -13,6 +13,7 @@ import Products from './pages/products/Products';
 import ProductCreate from './pages/products/ProductCreate';
 import ProductEdit from './pages/products/ProductEdit';
 import Orders from './pages/orders/Orders';
+import Profile from './pages/Profile';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <BrowserRouter>        
           <Routes>                 
             <Route path={'/'} element={<Dashboard />} />
+            <Route path={'/profile'} element={<Profile />} />
             <Route path={'/users'} element={<Users />} />
             <Route path={'/register'} element={<Register />} />
             <Route path={'/login'} element={<Login />} />
