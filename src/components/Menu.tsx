@@ -32,6 +32,12 @@ const Menu = () => {
                         Products
                     </NavLink>
                 </li>
+                <li className="nav-item">
+                    <NavLink to={'/orders'} className="nav-link">
+                        <span data-feather="home" className="align-text-bottom"></span>
+                        Orders
+                    </NavLink>
+                </li>
             </ul>
             </div>
         </nav>
