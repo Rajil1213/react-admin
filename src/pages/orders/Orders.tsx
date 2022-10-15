@@ -36,8 +36,24 @@ const Orders = () => {
         setSelected(selected === orderId? 0: orderId);
     }
 
+    const handleExport = async () => {
+        const { data } = await axios.post("export", {}, {responseType: "blob"})
+
+        // create a download link and "click" it
+        const url = window.URL.createObjectURL(data);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = "orders.csv";
+        link.click();
+    }
+
     return (
         <Wrapper>
+            <div className="pt-3 pb-2 mb-3 border-bottom">
+                <button className="btn btn-sm btn-outline-secondary" onClick={handleExport}>
+                    Export
+                </button>
+            </div>
 
             <div className="table-responsive">
                 <table className="table table-sm">
@@ -61,10 +77,11 @@ const Orders = () => {
                                         <td>{o.total}</td>
                                         <td>
                                             <div className="btn-group mr-2">
-                                                <a 
+                                                <button 
                                                     className="btn btn-sm btn-outline-secondary" 
-                                                    href="#" 
-                                                    onClick={e => select(o.id)}>View</a>
+                                                    onClick={e => select(o.id)}
+                                                    >View
+                                                </button>
                                             </div>
                                         </td>
                                     </tr>
