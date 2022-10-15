@@ -38,8 +38,13 @@ const Products = () => {
 
     return (
         <Wrapper>
+            <div className="pt-3 pb-2 mb-3 border-bottom">
+                <Link to="/products/create" className="btn btn-sm btn-outline-secondary">
+                    Add
+                </Link>
+            </div>
 
-          <div className="table-responsive">
+            <div className="table-responsive">
               <table className="table table-striped table-sm">
                   <thead>
                       <tr>
@@ -62,7 +67,7 @@ const Products = () => {
                                 <td>{p.price}</td>
                                 <td>
                                     <div className="btn-group mr-2">
-                                        <Link to={`/roles/${p.id}/edit`} className="btn btn-sm btn-outline-secondary">Edit</Link>
+                                        <Link to={`/products/${p.id}/edit`} className="btn btn-sm btn-outline-secondary">Edit</Link>
                                         <a href="#" className="btn btn-sm btn-outline-secondary"
                                             onClick={() => deleteProduct(p.id)}
                                         >Delete</a>
