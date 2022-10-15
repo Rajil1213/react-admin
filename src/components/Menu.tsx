@@ -26,6 +26,12 @@ const Menu = () => {
                         Roles
                     </NavLink>
                 </li>
+                <li className="nav-item">
+                    <NavLink to={'/products'} className="nav-link">
+                        <span data-feather="home" className="align-text-bottom"></span>
+                        Products
+                    </NavLink>
+                </li>
             </ul>
             </div>
         </nav>
