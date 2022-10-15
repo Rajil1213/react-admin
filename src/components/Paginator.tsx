@@ -28,10 +28,10 @@ const Paginator = (props: {
         <nav>
             <ul className="pagination">
                 <li className="page-item">
-                    <a href="#" className="page-link" onClick={previous}>Previous</a>
+                    <button className="page-link" onClick={previous}>Previous</button>
                 </li>
                 <li className="page-item">
-                    <a href="#" className="page-link" onClick={next}>Next</a>
+                    <button className="page-link" onClick={next}>Next</button>
                 </li>
             </ul>
         </nav>

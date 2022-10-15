@@ -59,9 +59,9 @@ const Products = () => {
                                 <td>
                                     <div className="btn-group mr-2">
                                         <Link to={`/products/${p.id}/edit`} className="btn btn-sm btn-outline-secondary">Edit</Link>
-                                        <a href="#" className="btn btn-sm btn-outline-secondary"
+                                        <button className="btn btn-sm btn-outline-secondary"
                                             onClick={() => deleteProduct(p.id)}
-                                        >Delete</a>
+                                        >Delete</button>
                                     </div>
                                 </td>
                             </tr>
