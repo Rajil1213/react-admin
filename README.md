@@ -6,6 +6,8 @@ A simple React App (bootstrapped with [`create-react-app`](https://github.com/fa
   - Starts the server on port 3000
 * `npm run build`
   - Builds the app for production to the `build` directory
+* `docker-compose up --build`
+  - Creates a container that runs the app via `nginx` on port 80 (http).
 
 # Code Structure
 This section explains the code structure for the parts that are different from the default `create-react-app` template.
