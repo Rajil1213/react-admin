@@ -6,8 +6,9 @@ import reportWebVitals from './reportWebVitals';
 import axios from 'axios';
 import { Provider } from 'react-redux';
 import { appStore } from './redux/configureStore';
+import BACKEND_URL from '../webpack.config.js';
 
-axios.defaults.baseURL = "http://localhost:8000/api/";
+axios.defaults.baseURL = `http://${BACKEND_URL}/api/`;
 axios.defaults.withCredentials = true;
 
 const store = appStore;
