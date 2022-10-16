@@ -51,9 +51,9 @@ const Roles = () => {
                                     <td>
                                         <div className="btn-group mr-2">
                                             <Link to={`/roles/${role.id}/edit`} className="btn btn-sm btn-outline-secondary">Edit</Link>
-                                            <a href="#" className="btn btn-sm btn-outline-secondary"
+                                            <button className="btn btn-sm btn-outline-secondary"
                                                 onClick={() => deleteRole(role.id)}
-                                            >Delete</a>
+                                            >Delete</button>
                                         </div>
 
                                     </td>
