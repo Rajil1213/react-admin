@@ -1,0 +1,7 @@
+version: '3.9'
+services:
+    admin-front:
+        build: .
+        image: admin-front
+        ports:
+            - 80:80
